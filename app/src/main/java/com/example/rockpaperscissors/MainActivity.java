@@ -13,6 +13,8 @@ import com.example.rockpaperscissors.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
@@ -34,6 +36,63 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        binding.contentMain.Rock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cpuChoose(1); // rock is 1
+            }
+        });
+
+    }
+
+    private void cpuChoose(int userChoice) {
+        Random random = new Random();
+        int number =random.nextInt(3);
+        switch (number) {
+            case 0:
+                binding.contentMain.image.setImageResource(R.drawable.paper);
+                break;
+            case 1:
+                binding.contentMain.image.setImageResource(R.drawable.rock);
+                break;
+            case 2:
+                binding.contentMain.image.setImageResource(R.drawable.scissors);
+                break;
+        }
+
+        checkWinner(number, userChoice);
+    }
+
+    private void checkWinner(int cpuChoice, int userChoice) {
+        switch (cpuChoice){
+            case 0:
+                if (userChoice == 2)
+                    binding.contentMain.winnerText.setText("You win 🎉");
+                else if (userChoice == 0)
+                    binding.contentMain.winnerText.setText("Its a tie 🤝");
+                else
+                    binding.contentMain.winnerText.setText("You lose 😢");
+                break;
+
+            case 1:
+                if (userChoice == 2)
+                    binding.contentMain.winnerText.setText("You lose 😢");
+                else if (userChoice == 1)
+                    binding.contentMain.winnerText.setText("Its a tie 🤝");
+                else
+                    binding.contentMain.winnerText.setText("You win 🎉");
+                break;
+
+            case 2:
+                if (userChoice == 1)
+                    binding.contentMain.winnerText.setText("You win 🎉");
+                else if (userChoice == 2)
+                    binding.contentMain.winnerText.setText("Its a tie 🤝");
+                else
+                    binding.contentMain.winnerText.setText("You lose 😢");
+                break;
+        }
     }
 
     @Override
