@@ -1,9 +1,10 @@
 package com.example.rockpaperscissors;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
-
+import static com.example.rockpaperscissors.Utils.showInfoDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -111,8 +112,16 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.action_about){
+                showInfoDialog(MainActivity.this, "About 13 Stones",
+                        "A quick two-player game; have fun!\n" +
+                                "\nAndroid game by SA.\nmintedtech@gmail.com");
+
         }
+
+
 
         return super.onOptionsItemSelected(item);
     }
