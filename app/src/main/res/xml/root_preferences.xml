@@ -4,6 +4,7 @@
 
         <EditTextPreference
             app:key="signature"
+
             app:title="@string/name_title"
             app:useSimpleSummaryProvider="true" />
 
@@ -17,9 +18,11 @@
             app:key="sync"
             app:title="@string/you_rock_string" />
 
+
         <SwitchPreferenceCompat
             app:dependency="sync"
             app:key="attachment"
+
             app:summaryOff="@string/no_to_more_apps_string"
             app:summaryOn="@string/yes_to_more_apps_string"
             app:title="@string/more_apps_please_string" />

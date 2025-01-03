@@ -4,6 +4,7 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
     </style>
 
     <style name="AppTheme.NoActionBar.Dialog" parent="Theme.Material3.Light.Dialog.MinWidth">

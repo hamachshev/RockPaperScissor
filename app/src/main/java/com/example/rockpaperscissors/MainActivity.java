@@ -1,13 +1,14 @@
 package com.example.rockpaperscissors;
 
-import static com.example.rockpaperscissors.Utils.showInfoDialog;
 
+import static com.example.rockpaperscissors.Utils.showInfoDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -154,9 +155,11 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(intent);
         } else if (id == R.id.action_about){
+
             showInfoDialog(MainActivity.this, "About Rock Paper Scissors",
                     "Rock Paper Scissors!!\n" +
                             "\nBy Aharon Seidman\nSholom Fiorini\nAnd Moshe Slepoy");
+
 
         }
 
