@@ -20,9 +20,9 @@
             android:orientation="horizontal"
             android:gravity="end">
             <TextView
+                android:id="@+id/games_won"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Games won: 27"
                 android:textSize="20dp"
                 android:padding="20dp"/>
         </LinearLayout>
@@ -32,13 +32,13 @@
             android:layout_width="wrap_content"
             android:layout_height="150dp"
             app:layout_constraintDimensionRatio="W,16:9"
-            android:src="@drawable/paper"/>
+           />
 
         <TextView
             android:id="@+id/winner_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="You won!!"
+            android:text="Choose one!!"
             android:textSize="40dp"/>
 
 
@@ -70,9 +70,6 @@
                 android:layout_height="wrap_content"
                 android:text="Scissors" />
         </LinearLayout>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Game 🎉"/>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
