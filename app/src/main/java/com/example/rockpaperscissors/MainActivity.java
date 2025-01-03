@@ -100,23 +100,23 @@ public class MainActivity extends AppCompatActivity {
         switch (model.getCpuChoice()){
             case ROCK:
                 if (model.getPlayerChoice() == Choice.PAPER) {
-                    binding.contentMain.winnerText.setText("You win 🎉");
+                    binding.contentMain.winnerText.setText(R.string.win_text);
                     if(!fromRestore) model.setGamesWon(model.getGamesWon() + 1);
                     binding.contentMain.gamesWon.setText("Games won: " + model.getGamesWon());
                 }
                 else if (model.getPlayerChoice() == Choice.ROCK)
-                    binding.contentMain.winnerText.setText("Its a tie 🤝");
+                    binding.contentMain.winnerText.setText(R.string.tie_text);
                 else
-                    binding.contentMain.winnerText.setText("You lose 😢");
+                    binding.contentMain.winnerText.setText(R.string.lose_text);
                 break;
 
             case PAPER:
                 if (model.getPlayerChoice() == Choice.ROCK)
-                    binding.contentMain.winnerText.setText("You lose 😢");
+                    binding.contentMain.winnerText.setText(R.string.lose_text);
                 else if (model.getPlayerChoice() == Choice.PAPER)
-                    binding.contentMain.winnerText.setText("Its a tie 🤝");
+                    binding.contentMain.winnerText.setText(R.string.tie_text);
                 else {
-                    binding.contentMain.winnerText.setText("You win 🎉");
+                    binding.contentMain.winnerText.setText(R.string.win_text);
                     if(!fromRestore) model.setGamesWon(model.getGamesWon() + 1);
                     binding.contentMain.gamesWon.setText("Games won: " + model.getGamesWon());
                 }
@@ -124,14 +124,14 @@ public class MainActivity extends AppCompatActivity {
 
             case SCISSORS:
                 if (model.getPlayerChoice() == Choice.ROCK) {
-                    binding.contentMain.winnerText.setText("You win 🎉");
+                    binding.contentMain.winnerText.setText(R.string.win_text);
                     if(!fromRestore) model.setGamesWon(model.getGamesWon() + 1);
                     binding.contentMain.gamesWon.setText("Games won: " + model.getGamesWon());
                 }
                 else if (model.getPlayerChoice() == Choice.SCISSORS)
-                    binding.contentMain.winnerText.setText("Its a tie 🤝");
+                    binding.contentMain.winnerText.setText(R.string.tie_text);
                 else
-                    binding.contentMain.winnerText.setText("You lose 😢");
+                    binding.contentMain.winnerText.setText(R.string.lose_text);
                 break;
         }
     }
