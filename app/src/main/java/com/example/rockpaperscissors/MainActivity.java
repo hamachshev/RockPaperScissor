@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.rockpaperscissors.databinding.ActivityMainBinding;
+import com.google.gson.Gson;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -91,15 +92,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        checkWinner();
+        checkWinner(false);
     }
 
-    private void checkWinner() {
+    private void checkWinner(boolean fromRestore) {
         switch (model.getCpuChoice()){
             case ROCK:
                 if (model.getPlayerChoice() == Choice.PAPER) {
                     binding.contentMain.winnerText.setText("You win 🎉");
-                    model.setGamesWon(model.getGamesWon() + 1);
+                    if(!fromRestore) model.setGamesWon(model.getGamesWon() + 1);
                     binding.contentMain.gamesWon.setText("Games won: " + model.getGamesWon());
                 }
                 else if (model.getPlayerChoice() == Choice.ROCK)
@@ -115,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     binding.contentMain.winnerText.setText("Its a tie 🤝");
                 else {
                     binding.contentMain.winnerText.setText("You win 🎉");
-                    model.setGamesWon(model.getGamesWon() + 1);
+                    if(!fromRestore) model.setGamesWon(model.getGamesWon() + 1);
                     binding.contentMain.gamesWon.setText("Games won: " + model.getGamesWon());
                 }
                 break;
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
             case SCISSORS:
                 if (model.getPlayerChoice() == Choice.ROCK) {
                     binding.contentMain.winnerText.setText("You win 🎉");
-                    model.setGamesWon(model.getGamesWon() + 1);
+                    if(!fromRestore) model.setGamesWon(model.getGamesWon() + 1);
                     binding.contentMain.gamesWon.setText("Games won: " + model.getGamesWon());
                 }
                 else if (model.getPlayerChoice() == Choice.SCISSORS)
@@ -167,12 +168,34 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
+        Gson gson = new Gson();
+        outState.putString("GAME", gson.toJson(model));
 
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+        Gson gson = new Gson();
+        model = gson.fromJson(savedInstanceState.getString("GAME"), GameModel.class);
+        updateUI();
+
+    }
+
+    private void updateUI() {
+        switch (model.getCpuChoice()){
+            case ROCK:
+                binding.contentMain.image.setImageResource(R.drawable.rock);
+                break;
+            case PAPER:
+                binding.contentMain.image.setImageResource(R.drawable.paper);
+                break;
+            case SCISSORS:
+                binding.contentMain.image.setImageResource(R.drawable.scissors);
+                break;
+        }
+
+       checkWinner(true);
 
     }
 
