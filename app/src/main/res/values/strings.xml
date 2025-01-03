@@ -20,5 +20,11 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="name_title">Name</string>
+    <string name="feedback_title">Tell us how we\'re doing!!</string>
+    <string name="more_apps_please_string">More apps please!</string>
+    <string name="yes_to_more_apps_string">Yes please!</string>
+    <string name="no_to_more_apps_string">I\'m not so sure</string>
+    <string name="you_rock_string">You rock!</string>
 
 </resources>
