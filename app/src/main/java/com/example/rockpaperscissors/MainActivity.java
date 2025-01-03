@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -21,6 +22,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private GameModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,57 +42,91 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        model = new GameModel();
+
         binding.contentMain.Rock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cpuChoose(1); // rock is 1
+                model.setPlayerChoice(Choice.ROCK);
+                cpuChoose(); // rock is 1
             }
         });
 
+        binding.contentMain.Paper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                model.setPlayerChoice(Choice.PAPER);
+                cpuChoose(); // rock is 1
+            }
+        });
+
+        binding.contentMain.Scissors.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                model.setPlayerChoice(Choice.SCISSORS);
+                cpuChoose(); // rock is 1
+            }
+        });
+
+
     }
 
-    private void cpuChoose(int userChoice) {
+    private void cpuChoose() {
         Random random = new Random();
-        int number =random.nextInt(3);
+        int number = random.nextInt(3);
         switch (number) {
             case 0:
                 binding.contentMain.image.setImageResource(R.drawable.paper);
+                model.setCpuChoice(Choice.PAPER);
                 break;
             case 1:
                 binding.contentMain.image.setImageResource(R.drawable.rock);
+                model.setCpuChoice(Choice.ROCK);
                 break;
             case 2:
                 binding.contentMain.image.setImageResource(R.drawable.scissors);
+                model.setCpuChoice(Choice.SCISSORS);
                 break;
         }
 
-        checkWinner(number, userChoice);
+
+        checkWinner();
     }
 
-    private void checkWinner(int cpuChoice, int userChoice) {
-        switch (cpuChoice){
-            case 0:
-                if (userChoice == 2)
+    private void checkWinner() {
+        switch (model.getCpuChoice()){
+            case ROCK:
+                if (model.getPlayerChoice() == Choice.PAPER) {
                     binding.contentMain.winnerText.setText("You win 🎉");
-                else if (userChoice == 0)
+                    model.setGamesWon(model.getGamesWon() + 1);
+                    binding.contentMain.gamesWon.setText("Games won: " + model.getGamesWon());
+                }
+                else if (model.getPlayerChoice() == Choice.ROCK)
                     binding.contentMain.winnerText.setText("Its a tie 🤝");
                 else
                     binding.contentMain.winnerText.setText("You lose 😢");
                 break;
 
-            case 1:
-                if (userChoice == 2)
+            case PAPER:
+                if (model.getPlayerChoice() == Choice.ROCK)
                     binding.contentMain.winnerText.setText("You lose 😢");
-                else if (userChoice == 1)
+                else if (model.getPlayerChoice() == Choice.PAPER)
                     binding.contentMain.winnerText.setText("Its a tie 🤝");
-                else
+                else {
                     binding.contentMain.winnerText.setText("You win 🎉");
+                    model.setGamesWon(model.getGamesWon() + 1);
+                    binding.contentMain.gamesWon.setText("Games won: " + model.getGamesWon());
+                }
                 break;
 
-            case 2:
-                if (userChoice == 1)
+            case SCISSORS:
+                if (model.getPlayerChoice() == Choice.ROCK) {
                     binding.contentMain.winnerText.setText("You win 🎉");
-                else if (userChoice == 2)
+                    model.setGamesWon(model.getGamesWon() + 1);
+                    binding.contentMain.gamesWon.setText("Games won: " + model.getGamesWon());
+                }
+                else if (model.getPlayerChoice() == Choice.SCISSORS)
                     binding.contentMain.winnerText.setText("Its a tie 🤝");
                 else
                     binding.contentMain.winnerText.setText("You lose 😢");
@@ -126,6 +162,18 @@ public class MainActivity extends AppCompatActivity {
 
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
     }
 
 }
