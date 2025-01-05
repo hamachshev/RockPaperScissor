@@ -185,19 +185,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        switch (model.getCpuChoice()){
-            case ROCK:
-                binding.contentMain.image.setImageResource(R.drawable.rock);
-                break;
-            case PAPER:
-                binding.contentMain.image.setImageResource(R.drawable.paper);
-                break;
-            case SCISSORS:
-                binding.contentMain.image.setImageResource(R.drawable.scissors);
-                break;
-        }
+        if (model.getPlayerChoice()!= null && model.getCpuChoice() != null) { //check if null ie was new game. if new game skip
+            switch (model.getCpuChoice()) {
+                case ROCK:
+                    binding.contentMain.image.setImageResource(R.drawable.rock);
+                    break;
+                case PAPER:
+                    binding.contentMain.image.setImageResource(R.drawable.paper);
+                    break;
+                case SCISSORS:
+                    binding.contentMain.image.setImageResource(R.drawable.scissors);
+                    break;
+            }
 
-       checkWinner(true);
+            checkWinner(true);
+        }
 
     }
 
