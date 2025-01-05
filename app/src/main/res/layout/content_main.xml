@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="20dp"
+        android:padding="@dimen/padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <LinearLayout
@@ -23,8 +23,8 @@
                 android:id="@+id/games_won"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:padding="20dp"/>
+                android:textSize="@dimen/text_size_games_won"
+                android:padding="@dimen/padding"/>
         </LinearLayout>
 
         <ImageView
@@ -38,8 +38,8 @@
             android:id="@+id/winner_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Choose one!!"
-            android:textSize="40dp"/>
+            android:text="@string/default_text"
+            android:textSize="@dimen/text_size_winner"/>
 
 
         <LinearLayout
@@ -56,19 +56,19 @@
                 android:id="@+id/Rock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rock" />
+                android:text="@string/rock_text" />
 
             <Button
                 android:id="@+id/Paper"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Paper" />
+                android:text="@string/paper_text" />
 
             <Button
                 android:id="@+id/Scissors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Scissors" />
+                android:text="@string/scissors_text" />
         </LinearLayout>
 
     </LinearLayout>

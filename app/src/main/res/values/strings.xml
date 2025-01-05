@@ -30,6 +30,13 @@
     <string name="win_text">You win 🎉</string>
     <string name="tie_text">Its a tie 🤝</string>
     <string name="lose_text">You lose 😢</string>
+    <string name="about_text">Rock Paper Scissors!!\nBy Aharon Seidman\nSholom Fiorini\nAnd Moshe Slepoy</string>
+    <string name="about_title">About Rock Paper Scissors</string>
+    <string name="fab_text">You found the super secret button!!</string>
+    <string name="default_text">Choose one!!</string>
+    <string name="rock_text">Rock</string>
+    <string name="paper_text">Paper</string>
+    <string name="scissors_text">Scissors</string>
 
 
 </resources>

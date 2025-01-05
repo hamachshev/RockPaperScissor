@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "You found the super secret button!!", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, getString(R.string.fab_text), Snackbar.LENGTH_LONG)
                         .setAnchorView(R.id.fab)
                         .setAction("Action", null).show();
             }
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 model.setPlayerChoice(Choice.ROCK);
-                cpuChoose(); // rock is 1
+                cpuChoose();
             }
         });
 
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 model.setPlayerChoice(Choice.PAPER);
-                cpuChoose(); // rock is 1
+                cpuChoose();
             }
         });
 
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 model.setPlayerChoice(Choice.SCISSORS);
-                cpuChoose(); // rock is 1
+                cpuChoose();
             }
         });
 
@@ -156,9 +156,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         } else if (id == R.id.action_about){
 
-            showInfoDialog(MainActivity.this, "About Rock Paper Scissors",
-                    "Rock Paper Scissors!!\n" +
-                            "\nBy Aharon Seidman\nSholom Fiorini\nAnd Moshe Slepoy");
+            showInfoDialog(MainActivity.this, getString(R.string.about_title),
+                    getString(R.string.about_text));
 
 
         }
